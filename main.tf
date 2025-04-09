@@ -27,11 +27,11 @@ module "storage" {
   tags = local.tags
 }
 
-module "storage" {
+module "second" {
   source = "./modules/blobstorage"
 
   resource_group_name  = azurerm_resource_group.default.name
-  storage_account_name = "pipelinecwacc"
+  storage_account_name = "hellopipelinewrkflw"
 
   tags = local.tags
 }
