@@ -5,5 +5,6 @@ terraform {
     storage_account_name = "eonaprilstorage"
     container_name       = "tfstate"
     key                  = "eon-april.tfstate"
+    use_msi              = true
   }
 }
