@@ -14,7 +14,11 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     environment: production
-
+    env:
+      ARM_CLIENT_ID: ${{ vars.ARM_CLIENT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ vars.ARM_SUBSCRIPTION_ID }}}
+      ARM_TENANT_ID: ${{ vars.ARM_TENANT_ID }}
+        
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
