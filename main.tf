@@ -27,7 +27,22 @@ resource "azurerm_storage_account" "default" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
+  allow_nested_items_to_be_public = false
+
+  blob_properties {
+  }
+
   tags = local.tags
+}
+
+resource "azurerm_storage_container" "terraform" {
+  name                  = "tfstate"
+  storage_account_id    = azurerm_storage_account.default.id
+  container_access_type = "private"
+}
+
+output "storage_account_id" {
+  value = azurerm_storage_account.default.id
 }
 
 data "azurerm_client_config" "me" {
