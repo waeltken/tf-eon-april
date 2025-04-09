@@ -27,15 +27,6 @@ module "storage" {
   tags = local.tags
 }
 
-module "storage" {
-  source = "./modules/blobstorage"
-
-  resource_group_name  = azurerm_resource_group.default.name
-  storage_account_name = "pipelinecwacc"
-
-  tags = local.tags
-}
-
 output "storage_account_id" {
   value = module.storage.storage_account_id
 }
