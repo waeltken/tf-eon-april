@@ -7,5 +7,5 @@ output "location" {
 }
 
 output "storage_account_url" {
-  value = azurerm_storage_account.default.primary_blob_endpoint
+  value = module.storage.primary_blob_endpoint
 }

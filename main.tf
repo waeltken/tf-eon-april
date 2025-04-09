@@ -18,31 +18,17 @@ resource "azurerm_resource_group" "default" {
   }
 }
 
-resource "azurerm_storage_account" "default" {
-  name = local.storage_account_name
+module "storage" {
+  source = "./modules/blobstorage"
 
-  location            = azurerm_resource_group.default.location
-  resource_group_name = azurerm_resource_group.default.name
-
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-
-  allow_nested_items_to_be_public = false
-
-  blob_properties {
-  }
+  resource_group_name  = azurerm_resource_group.default.name
+  storage_account_name = local.storage_account_name
 
   tags = local.tags
 }
 
-resource "azurerm_storage_container" "terraform" {
-  name                  = "tfstate"
-  storage_account_id    = azurerm_storage_account.default.id
-  container_access_type = "private"
-}
-
 output "storage_account_id" {
-  value = azurerm_storage_account.default.id
+  value = module.storage.storage_account_id
 }
 
 data "azurerm_client_config" "me" {
