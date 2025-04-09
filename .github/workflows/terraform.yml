@@ -18,6 +18,8 @@ jobs:
       ARM_CLIENT_ID: ${{ vars.ARM_CLIENT_ID }}
       ARM_SUBSCRIPTION_ID: ${{ vars.ARM_SUBSCRIPTION_ID }}}
       ARM_TENANT_ID: ${{ vars.ARM_TENANT_ID }}
+      TF_VAR_location: germanywestcentral
+      TF_VAR_environment_name: april
         
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
